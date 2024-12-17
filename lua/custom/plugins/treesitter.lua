@@ -1,6 +1,5 @@
 return {
   {
-    -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
@@ -8,15 +7,29 @@ return {
     },
     build = ':TSUpdate',
     config = function()
-      -- [[ Configure Treesitter ]]
-      -- See `:help nvim-treesitter`
-      -- Defer Treesitter setup after first render to improve startup time of 'nvim {filename}'
+      -- Improve startup time of 'nvim {filename}'
       vim.defer_fn(function()
         require('nvim-treesitter.configs').setup {
-          -- Add languages to be installed here that you want installed for treesitter
-          ensure_installed = { 'nu', 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash' },
+          ensure_installed = {
+            'nu',
+            'c',
+            'cpp',
+            'go',
+            'lua',
+            'python',
+            'rust',
+            'tsx',
+            'javascript',
+            'typescript',
+            'vimdoc',
+            'vim',
+            'bash',
+          },
+          sync_install = false,
+          modules = {},
 
-          -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
+          ignore_install = { },
+
           auto_install = false,
 
           highlight = { enable = true },
@@ -82,7 +95,8 @@ return {
   {
     "nvim-treesitter/nvim-treesitter-context",
     config = function()
-      require("treesitter-context").setup {
+      local tc = require("treesitter-context")
+      tc.setup {
         enable = true,
         max_lines = 5,
         min_window_height = 0,
@@ -93,10 +107,8 @@ return {
         separator = "-",
         zindex = 20,
       }
-      vim.keymap.set("n", "<leader>ct", ":TSContextToggle<CR>", { silent = true, desc = "Toggle the context" })
-      vim.keymap.set("n", "<leader>cu", function()
-        require("treesitter-context").go_to_context()
-      end, { silent = true, desc = "Go up in the context" })
+      vim.keymap.set("n", "<leader>ct", tc.toggle, { silent = true })
+      vim.keymap.set("n", "<leader>cu", tc.go_to_context , { silent = true })
     end
   },
 
