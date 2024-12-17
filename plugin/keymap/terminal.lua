@@ -24,7 +24,9 @@ local open_terminal = function (pos, size)
 end
 vim.keymap.set("n", "<leader>tt", vim.cmd.term, { silent = true })
 vim.keymap.set("n", "<leader>tj", open_terminal("J", { height = 12 }), { silent = true })
+vim.keymap.set("n", "<leader>tk", open_terminal("K", { height = 12 }), { silent = true })
 vim.keymap.set("n", "<leader>tl", open_terminal("L", { width = 50 }), { silent = true })
+vim.keymap.set("n", "<leader>th", open_terminal("H", { width = 50 }), { silent = true })
 
 -- Set local settings for terminal buffers
 vim.api.nvim_create_autocmd("TermOpen", {
