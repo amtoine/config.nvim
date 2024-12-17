@@ -51,5 +51,14 @@ return { {
     )
     vim.keymap.set("n", "<leader>fh", builtin.help_tags)
     vim.keymap.set("n", "<leader>fg", builtin.live_grep)
+    vim.keymap.set("n", "<leader>fp", function()
+      local lazypath = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy")
+      builtin.find_files {
+        prompt_title = "Explore LazyVim plugin files from " .. lazypath .. "...",
+        results_title = false,
+        preview_title = false,
+        cwd = lazypath,
+      }
+    end)
   end
 } }
