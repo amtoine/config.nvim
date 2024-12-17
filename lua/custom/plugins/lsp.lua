@@ -18,6 +18,8 @@ return { {
 
     lc.lua_ls.setup {}
 
+    lc.rust_analyzer.setup {}
+
     lc.nushell.setup {}
     vim.filetype.add({
       extension = {
