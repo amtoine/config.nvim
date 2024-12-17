@@ -19,11 +19,6 @@ return {
         ':AerialToggle!<CR>',
         { silent = true, desc = "Open list of Aerial objets" }
       )
-
-      require('which-key').add {
-        { "<leader>a", group = "[A]erial" },
-        { "<leader>a_", hidden = true },
-      }
     end
   },
 }

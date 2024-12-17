@@ -5,11 +5,6 @@ return {
       local mark = require("harpoon.mark")
       local ui = require("harpoon.ui")
 
-      require('which-key').add {
-        { "<leader>h", group = "[H]arpoon" },
-        { "<leader>h_", hidden = true },
-      }
-
       local nmap = require("custom._utils").nmap
       nmap("<leader>ha", mark.add_file, "[h]arpoon: [a]dd a file to the menu")
       nmap("<leader>he", ui.toggle_quick_menu, "[h]arpoon: toggle menu [e]ntries")

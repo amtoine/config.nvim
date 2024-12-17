@@ -1,9 +1,5 @@
 local nmap = require("custom._utils").nmap
 
-require('which-key').add {
-    { "<leader>w", group = "[W]indows" },
-    { "<leader>w_", hidden = true },
-}
 -- Maximize, close and equalize
 nmap("<leader>wm", "<C-w>_<C-w>|")
 nmap("<leader>wc", "<C-w>o")

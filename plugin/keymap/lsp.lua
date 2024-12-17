@@ -1,9 +1,5 @@
 local nmap = require("custom._utils").nmap
 
-require('which-key').add {
-    { "<leader>l", group = "[L]SP" },
-    { "<leader>l_", hidden = true },
-}
 nmap('[d', vim.diagnostic.goto_prev)
 nmap(']d', vim.diagnostic.goto_next)
 

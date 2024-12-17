@@ -1,8 +1,3 @@
-require('which-key').add {
-  { "<leader>t", group = "[T]erminal" },
-  { "<leader>t_", hidden = true },
-}
-
 -- Easily hit escape in terminal mode.
 vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
 

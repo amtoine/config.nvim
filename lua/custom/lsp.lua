@@ -85,11 +85,6 @@ trouble.setup {
   icons = true,
 }
 
-require('which-key').add {
-  { "<leader>lt", group = "[L]SP [T]rouble" },
-  { "<leader>lt_", hidden = true },
-}
-
 local toggle = function(mode --[[string]])
   return function() trouble.toggle(mode) end
 end
@@ -111,11 +106,6 @@ nmap("<leader>ltG", jump(trouble.last), "Jump to last item")
 --------------------------------------------------------------------------------
 local goto_preview = require('goto-preview')
 goto_preview.setup {}
-
-require('which-key').add {
-  { "<leader>lg", group = "[L]SP [G]oto" },
-  { "<leader>lg_", hidden = true },
-}
 
 nmap("<leader>lgd", goto_preview.goto_preview_definition, "Goto definition")
 nmap("<leader>lgt", goto_preview.goto_preview_type_definition, "Goto type")
