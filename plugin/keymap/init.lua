@@ -1,8 +1,5 @@
 vim.keymap.set("n", "<Esc>", ":nohlsearch<CR><Esc>", { silent = true })
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-
-vim.keymap.set("n", "<c-p>", vim.cmd.Ex, { silent = true, desc = "O[p]en the [f]ile explorer" })
-
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("i", "<C-c>", "<Esc>", { silent = true })
 
