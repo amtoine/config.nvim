@@ -7,18 +7,14 @@ return {
       "nvim-tree/nvim-web-devicons"
     },
     config = function()
-      require('aerial').setup({
+      local aerial = require("aerial")
+      aerial.setup({
         on_attach = function(bufnr)
-          vim.keymap.set('n', '{', '<cmd>AerialPrev<CR>', { buffer = bufnr })
-          vim.keymap.set('n', '}', '<cmd>AerialNext<CR>', { buffer = bufnr })
+          vim.keymap.set('n', '<leader>ap', aerial.prev, { buffer = bufnr })
+          vim.keymap.set('n', '<leader>an', aerial.next, { buffer = bufnr })
         end
       })
-      vim.keymap.set(
-        'n',
-        '<leader>at',
-        ':AerialToggle!<CR>',
-        { silent = true, desc = "Open list of Aerial objets" }
-      )
+      vim.keymap.set('n', '<leader>at', aerial.toggle, { silent = true })
     end
   },
 }
