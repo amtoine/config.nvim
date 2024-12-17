@@ -1,27 +1,25 @@
 local nmap = require("custom._utils").nmap
 
 local on_attach = function(_, bufnr)
-  nmap('<leader>lr', vim.lsp.buf.rename, '[R]e[n]ame', bufnr)
-  nmap('<leader>lc', vim.lsp.buf.code_action, '[C]ode [A]ction', bufnr)
+  nmap('<leader>lr', vim.lsp.buf.rename, bufnr)
+  nmap('<leader>lc', vim.lsp.buf.code_action, bufnr)
 
   local telescope = require('telescope.builtin')
-  nmap('<leader>lgd', telescope.lsp_definitions, '[G]oto [D]efinition', bufnr)
-  nmap('<leader>lgr', telescope.lsp_references, '[G]oto [R]eferences', bufnr)
-  nmap('<leader>lgI', telescope.lsp_implementations, '[G]oto [I]mplementation', bufnr)
-  nmap('<leader>lD', telescope.lsp_type_definitions, 'Type [D]efinition', bufnr)
-  nmap('<leader>lds', telescope.lsp_document_symbols, '[D]ocument [S]ymbols', bufnr)
-  nmap('<leader>lws', telescope.lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols', bufnr)
+  nmap('<leader>lgd', telescope.lsp_definitions, bufnr)
+  nmap('<leader>lgr', telescope.lsp_references, bufnr)
+  nmap('<leader>lgI', telescope.lsp_implementations, bufnr)
+  nmap('<leader>lD', telescope.lsp_type_definitions, bufnr)
+  nmap('<leader>lds', telescope.lsp_document_symbols, bufnr)
+  nmap('<leader>lws', telescope.lsp_dynamic_workspace_symbols, bufnr)
 
   -- See `:help K` for why this keymap
-  nmap('<leader>lh', vim.lsp.buf.hover, 'Hover Documentation', bufnr)
-  nmap('<leader>ls', vim.lsp.buf.signature_help, 'Signature Documentation', bufnr)
+  nmap('<leader>lh', vim.lsp.buf.hover, bufnr)
+  nmap('<leader>ls', vim.lsp.buf.signature_help, bufnr)
 
-  nmap('<leader>lgD', vim.lsp.buf.declaration, '[G]oto [D]eclaration', bufnr)
-  nmap('<leader>lwa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder', bufnr)
-  nmap('<leader>lwr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder', bufnr)
-  nmap('<leader>lwf', function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, '[W]orkspace list [F]olders', bufnr)
+  nmap('<leader>lgD', vim.lsp.buf.declaration, bufnr)
+  nmap('<leader>lwa', vim.lsp.buf.add_workspace_folder, bufnr)
+  nmap('<leader>lwr', vim.lsp.buf.remove_workspace_folder, bufnr)
+  nmap('<leader>lwf', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, bufnr)
 
   vim.api.nvim_buf_create_user_command(
     bufnr, 'Format', vim.lsp.buf.format, {}
