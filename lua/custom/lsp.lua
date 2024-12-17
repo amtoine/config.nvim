@@ -24,7 +24,7 @@ local on_attach = function(_, bufnr)
   end, '[W]orkspace list [F]olders', bufnr)
 
   vim.api.nvim_buf_create_user_command(
-    bufnr, 'Format', vim.lsp.buf.format, { desc = 'Format current buffer with LSP' }
+    bufnr, 'Format', vim.lsp.buf.format, {}
   )
 end
 

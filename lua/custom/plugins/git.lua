@@ -39,7 +39,7 @@ return {
         map('n', '<leader>gtb', gs.toggle_current_line_blame)
         map('n', '<leader>gtd', gs.toggle_deleted)
 
-        map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { desc = 'select git hunk' })
+        map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
       end,
     },
   },
@@ -57,7 +57,7 @@ return {
         "nvim-lua/plenary.nvim",
     },
     keys = {
-       { "<leader>glg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
+       { "<leader>glg", "<cmd>LazyGit<cr>" }
     }
   }
 }

@@ -16,7 +16,7 @@ return {
       },
     }
 
-    vim.keymap.set("n", "-", oil.open, { desc = "Open parent directory" })
-    vim.keymap.set("n", "<leader>-", oil.toggle_float, { desc = "Open parent directory in floating mode" })
+    vim.keymap.set("n", "-", oil.open)
+    vim.keymap.set("n", "<leader>-", oil.toggle_float)
   end,
 }
