@@ -37,18 +37,7 @@ return { {
       },
     }
 
-    vim.keymap.set("n", "<leader>fd", function()
-      local opts = { prompt_title = "Find project files..." }
-
-      vim.fn.system("git rev-parse --is-inside-work-tree")
-
-      if vim.v.shell_error == 0 then
-        builtin.git_files(opts)
-      else
-        builtin.find_files(opts)
-      end
-    end
-    )
+    vim.keymap.set("n", "<leader>fd", require("custom.telescope").project_files)
     vim.keymap.set("n", "<leader>fh", builtin.help_tags)
     vim.keymap.set("n", "<leader>fg", builtin.live_grep)
     vim.keymap.set("n", "<leader>fp", function()
@@ -60,6 +49,6 @@ return { {
         cwd = lazypath,
       }
     end)
-    vim.keymap.set("n", "<leader>fm", require("telescope.multigrep").multigrep)
+    vim.keymap.set("n", "<leader>fm", require("custom.telescope").multigrep)
   end
 } }
