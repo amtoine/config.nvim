@@ -60,5 +60,6 @@ return { {
         cwd = lazypath,
       }
     end)
+    vim.keymap.set("n", "<leader>fm", require("telescope.multigrep").multigrep)
   end
 } }
