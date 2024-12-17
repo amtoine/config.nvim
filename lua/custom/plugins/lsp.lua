@@ -18,10 +18,16 @@ return { {
 
     lc.lua_ls.setup {}
 
-    vim.keymap.set('n', 'grn', vim.lsp.buf.rename)
-    vim.keymap.set('n', 'gra', vim.lsp.buf.code_action)
-    vim.keymap.set('n', 'grr', vim.lsp.buf.references)
-    vim.keymap.set('n', 'grf', vim.lsp.buf.format)
+    vim.keymap.set('n', '<leader>ln', vim.lsp.buf.rename)
+    vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action)
+    vim.keymap.set('n', '<leader>lr', vim.lsp.buf.references)
+
+    vim.keymap.set("n", '<leader>le', vim.diagnostic.open_float)
+    vim.keymap.set("n", '<leader>lq', vim.diagnostic.setloclist)
+
+    vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format)
+
+    vim.keymap.set("n", '<leader>li', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled()) end)
 
     -- format on save
     vim.api.nvim_create_autocmd("LspAttach", {
