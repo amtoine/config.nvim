@@ -29,6 +29,8 @@ return { {
     vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action)
     vim.keymap.set('n', '<leader>lr', vim.lsp.buf.references)
 
+    vim.keymap.set('n', '<leader>ld', vim.lsp.buf.definition)
+
     vim.keymap.set("n", '<leader>le', vim.diagnostic.open_float)
     vim.keymap.set("n", '<leader>lq', vim.diagnostic.setloclist)
 
