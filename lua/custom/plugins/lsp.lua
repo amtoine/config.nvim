@@ -1,15 +1,23 @@
 return { {
   'neovim/nvim-lspconfig',
   dependencies = {
-    { 'williamboman/mason.nvim', config = true },
-    'williamboman/mason-lspconfig.nvim',
-    { 'j-hui/fidget.nvim',       opts = {} },
-    'folke/neodev.nvim',
-    "folke/trouble.nvim",
-    "nvim-tree/nvim-web-devicons",
-    'rmagatti/goto-preview',
+    {
+      "folke/lazydev.nvim",
+      ft = "lua",
+      opts = {
+        library = {
+          { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+        },
+      },
+    }
   },
   config = function()
-    require("custom.lsp")
+    local lc = require("lspconfig")
+
+    lc.lua_ls.setup {}
+
+    vim.keymap.set('n', 'grn', vim.lsp.buf.rename)
+    vim.keymap.set('n', 'gra', vim.lsp.buf.code_action)
+    vim.keymap.set('n', 'grr', vim.lsp.buf.references)
   end,
 } }
