@@ -9,7 +9,9 @@ return { {
           { path = "${3rd}/luv/library", words = { "vim%.uv" } },
         },
       },
-    }
+    },
+    { "j-hui/fidget.nvim", opts = {} },
+    "nvim-tree/nvim-web-devicons",
   },
   config = function()
     local lc = require("lspconfig")
