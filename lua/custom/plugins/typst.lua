@@ -1,13 +1,16 @@
 return {
   {
     'kaarmu/typst.vim',
+    enabled = true,
     ft = 'typst',
     lazy = false,
   },
 
   {
     'chomosuke/typst-preview.nvim',
-    lazy = false, -- or ft = 'typst'
+    enabled = true,
+    ft = 'typst',
+    lazy = false,
     version = '0.1.*',
     build = function() require 'typst-preview'.update() end,
   }
