@@ -1,14 +1,13 @@
--- [[ Highlight on yank ]]
--- See `:help vim.highlight.on_yank()`
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+-- Highlight on yank
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
     vim.highlight.on_yank()
   end,
-  group = highlight_group,
+  group = vim.api.nvim_create_augroup('YankHighlight', { clear = true }),
   pattern = '*',
 })
 
+-- Go in insert mode when opening a terminal
 vim.api.nvim_create_autocmd("TermOpen", {
     pattern = "*",
     command = "startinsert",
@@ -16,6 +15,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
 
 vim.cmd.colorscheme("rose-pine")
 
+-- Highlight trailing whitespaces
 vim.api.nvim_create_autocmd({ "BufEnter", "WinEnter" }, {
     pattern = "*",
     callback = function ()

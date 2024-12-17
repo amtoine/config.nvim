@@ -1,4 +1,7 @@
-vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]], { desc = "paste without overwriting the register" })
-vim.keymap.set({ "n", "v" }, "<leader>P", [["+P]], { desc = "paste without overwriting the register" })
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "yank to system clipboard only on demand" })
-vim.keymap.set({ "n", "v" }, "<leader>d", [["+d]], { desc = "cut to system clipboard only on demand" })
+-- yank
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+-- cut
+vim.keymap.set({ "n", "v" }, "<leader>d", [["+d]])
+-- paste
+vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]])
+vim.keymap.set({ "n", "v" }, "<leader>P", [["+P]])
