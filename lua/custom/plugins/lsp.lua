@@ -12,13 +12,15 @@ return { {
     },
     { "j-hui/fidget.nvim", opts = {} },
     "nvim-tree/nvim-web-devicons",
+    'saghen/blink.cmp',
   },
   config = function()
     local lc = require("lspconfig")
+    local capabilities = require('blink.cmp').get_lsp_capabilities()
 
-    lc.lua_ls.setup {}
-    lc.rust_analyzer.setup {}
-    lc.nushell.setup {}
+    for _, lang in pairs { "lua_ls", "rust_analyzer", "nushell" } do
+      lc[lang].setup { capabilities = capabilities }
+    end
 
     vim.keymap.set('n', '<leader>ln', vim.lsp.buf.rename)
     vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action)
