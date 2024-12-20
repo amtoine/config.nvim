@@ -7,12 +7,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
--- Go in insert mode when opening a terminal
-vim.api.nvim_create_autocmd("TermOpen", {
-    pattern = "*",
-    command = "startinsert",
-})
-
 vim.cmd.colorscheme("rose-pine")
 
 -- Highlight trailing whitespaces

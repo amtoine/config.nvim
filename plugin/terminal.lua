@@ -49,6 +49,8 @@ local open_floating_terminal = function(opts)
 
   local win = vim.api.nvim_open_win(buf, true, win_config)
 
+  vim.cmd("startinsert")
+
   return { buf = buf, win = win }
 end
 
@@ -73,12 +75,12 @@ vim.keymap.set("n", "<leader>th", open_terminal("H", { width = 50 }), { silent =
 vim.api.nvim_create_user_command('Floaterminal', toggle_floating_terminal, {})
 vim.keymap.set({ "n", "t" }, "<leader>tf", toggle_floating_terminal)
 
--- Set local settings for terminal buffers
 vim.api.nvim_create_autocmd("TermOpen", {
   group = vim.api.nvim_create_augroup("custom-term-open", {}),
   callback = function()
     vim.opt_local.number = false
     vim.opt_local.relativenumber = false
     vim.opt_local.scrolloff = 0
+    vim.cmd("startinsert")
   end,
 })
