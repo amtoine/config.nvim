@@ -17,15 +17,8 @@ return { {
     local lc = require("lspconfig")
 
     lc.lua_ls.setup {}
-
     lc.rust_analyzer.setup {}
-
     lc.nushell.setup {}
-    vim.filetype.add({
-      extension = {
-        nuon = "nu",
-      }
-    })
 
     vim.keymap.set('n', '<leader>ln', vim.lsp.buf.rename)
     vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action)
