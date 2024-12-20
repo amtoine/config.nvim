@@ -3,7 +3,7 @@ local format = function()
     print "not a Nushell buffer"
   else
     print "formatting"
-    pcall(function() vim.cmd([[:%s/\([a-zA-Z"\])}]\)\s*|\s*/\1\r    | /g]]) end)
+    pcall(function() vim.cmd([[:%s/\([a-zA-Z"\])}0-9]\)\s*|\s*/\1\r    | /g]]) end)
 
     pcall(function() vim.cmd([[%s/^\s*|/    |/]]) end)
   end
