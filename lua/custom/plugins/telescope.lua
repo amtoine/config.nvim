@@ -15,6 +15,7 @@ return { {
     local telescope = require('telescope')
     local actions = require("telescope.actions")
     local builtin = require("telescope.builtin")
+    local ctelescope = require("custom.telescope")
 
     telescope.setup {
       defaults = {
@@ -47,18 +48,10 @@ return { {
 
     telescope.load_extension('fzf')
 
-    vim.keymap.set("n", "<leader>fd", require("custom.telescope").project_files)
+    vim.keymap.set("n", "<leader>fd", ctelescope.project_files)
     vim.keymap.set("n", "<leader>fh", builtin.help_tags)
     vim.keymap.set("n", "<leader>fg", builtin.live_grep)
-    vim.keymap.set("n", "<leader>fp", function()
-      local lazypath = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy")
-      builtin.find_files {
-        prompt_title = "Explore LazyVim plugin files from " .. lazypath .. "...",
-        results_title = false,
-        preview_title = false,
-        cwd = lazypath,
-      }
-    end)
-    vim.keymap.set("n", "<leader>fm", require("custom.telescope").multigrep)
+    vim.keymap.set("n", "<leader>fp", ctelescope.lazy_plugins)
+    vim.keymap.set("n", "<leader>fm", ctelescope.multigrep)
   end
 } }

@@ -10,6 +10,7 @@ local M = {}
 M.project_files = function(opts)
   opts = opts or {}
   opts.prompt_title = opts.prompt_title or "Find project files..."
+  opts.hidden = opts.hidden or true
 
   vim.fn.system("git rev-parse --is-inside-work-tree")
 
@@ -58,6 +59,16 @@ M.multigrep = function(opts)
     previewer = conf.grep_previewer(opts),
     sorters = sorters.empty(),
   }):find()
+end
+
+M.lazy_plugins = function()
+  local lazypath = vim.fs.joinpath(vim.fn.stdpath("data"), "lazy")
+  builtin.find_files {
+    prompt_title = "Explore LazyVim plugin files from " .. lazypath .. "...",
+    results_title = false,
+    preview_title = false,
+    cwd = lazypath,
+  }
 end
 
 return M
