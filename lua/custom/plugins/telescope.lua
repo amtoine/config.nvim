@@ -35,7 +35,17 @@ return { {
           theme = "ivy"
         }
       },
+      extensions = {
+        fzf = {
+          fuzzy = true,
+          override_generic_sorter = true,
+          override_file_sorter = true,
+          case_mode = "smart_case",
+        }
+      }
     }
+
+    telescope.load_extension('fzf')
 
     vim.keymap.set("n", "<leader>fd", require("custom.telescope").project_files)
     vim.keymap.set("n", "<leader>fh", builtin.help_tags)
