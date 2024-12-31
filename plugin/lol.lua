@@ -9,7 +9,7 @@ vim.cmd [[
   nmenu PopUp.Back               <c-t>
 ]]
 
-local popup_menu_group = vim.api.nvim_create_augroup("nvim_popup_menu", { clear = true })
+local popup_menu_group = vim.api.nvim_create_augroup("nvim_popupmenu", { clear = true })
 
 local disable = function(x) vim.cmd("amenu disable " .. x) end
 local enable = function(x) vim.cmd("amenu enable " .. x) end
