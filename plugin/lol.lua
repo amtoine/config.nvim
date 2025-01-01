@@ -10,6 +10,11 @@ vim.cmd [[
   amenu PopUp.URL                gx
 ]]
 
+local lsp_entries = { "PopUp.Definition", "PopUp.References" }
+local url_entry = "PopUp.URL"
+
+local non_default_entries = { url_entry, unpack(lsp_entries) }
+
 local popup_menu_group = vim.api.nvim_create_augroup("nvim_popupmenu", { clear = true })
 
 local disable = function(x) vim.cmd("amenu disable " .. x) end
@@ -20,18 +25,19 @@ vim.api.nvim_create_autocmd("MenuPopup", {
   group = popup_menu_group,
   desc = "LOL: Custom Menu PopUp",
   callback = function()
-    disable("PopUp.Definition")
-    disable("PopUp.References")
-    disable("PopUp.URL")
+    for _, entry in ipairs(non_default_entries) do
+      disable(entry)
+    end
 
     if vim.lsp.get_clients { bufnr = 0 }[1] then
-      enable("PopUp.Definition")
-      enable("PopUp.References")
+      for _, entry in ipairs(lsp_entries) do
+        enable(entry)
+      end
     end
 
     local urls = require("vim.ui")._get_urls()
     if vim.startswith(urls[1], "http") then
-      enable("PopUp.URL")
+      enable(url_entry)
     end
   end
 })
